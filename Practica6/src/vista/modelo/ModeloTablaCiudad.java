@@ -32,16 +32,18 @@ public class ModeloTablaCiudad extends AbstractTableModel{
     public int getColumnCount() {
         return 2;
     }
+
     @Override
-    public Object getValueAt(int i, int i1) {
+    public Object getValueAt(int rowIndex, int columnIndex) {
         Ciudad ciu = null;
+        
         try {
-            ciu = lista.get(i1);
+            ciu = lista.get(rowIndex);
         } catch (Exception e) {
         }
-        switch (i1) {
-            case 0: return ciu.getId();
-            case 1: return ciu.getNombre();
+        switch (columnIndex) {
+            case 0: return (ciu != null) ? ciu.getId() : "No definido";
+            case 1: return (ciu != null) ? ciu.getNombre() : "No definido";
                 
             default:
                 return null;
@@ -51,7 +53,7 @@ public class ModeloTablaCiudad extends AbstractTableModel{
     public String getColumnName(int column){
         switch (column) {
             case 0: return "ID";
-            case 1: return "CIUDAD";
+            case 1: return "NOMBRE";
                 
             default:
                 return null;

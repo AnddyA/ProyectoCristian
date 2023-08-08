@@ -232,7 +232,9 @@ public class FrmRegistrar extends javax.swing.JDialog {
 
     private void btnGuardarCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarCiudadActionPerformed
         // TODO add your handling code here:
+        FrmRuta dialog = new FrmRuta(new javax.swing.JFrame(), true);
         guardarCiudad();
+        dialog.cargarTabla();
     }//GEN-LAST:event_btnGuardarCiudadActionPerformed
 
     private void btnGuradarRutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuradarRutaActionPerformed

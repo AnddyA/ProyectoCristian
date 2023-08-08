@@ -7,6 +7,8 @@ package vista;
 import controlador.DAO.ejgrafo.CiudadDao;
 import controlador.DAO.ejgrafo.grafos.CiudadGrafo;
 import controlador.ed.grafo.Grafo;
+import controlador.ed.lista.ListaEnlazada;
+import modelo.Ciudad;
 import vista.modelo.ModeloTablaCiudad;
 import vista.utilidades.UtilidadesVistaGrafo;
 
@@ -19,7 +21,7 @@ public class FrmRuta extends javax.swing.JDialog {
     private ModeloTablaCiudad modelo = new ModeloTablaCiudad();
     private CiudadDao ciuD = new CiudadDao();
     private UtilidadesVistaGrafo utilidades = new UtilidadesVistaGrafo();
-    
+
     /**
      * Creates new form FrmRuta
      */
@@ -27,14 +29,14 @@ public class FrmRuta extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-        cargarTabla();
         cargarCombo();
+        cargarTabla();
     }
     
     public void cargarTabla(){
         modelo.setLista(ciuD.listar());
-        tblCiudad.setModel(modelo);
-        tblCiudad.updateUI();
+        tblTabla.setModel(modelo);
+        tblTabla.updateUI();
     }
     
     public void cargarCombo(){
@@ -64,9 +66,9 @@ public class FrmRuta extends javax.swing.JDialog {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblCiudad = new javax.swing.JTable();
         jButton4 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblTabla = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -133,7 +135,14 @@ public class FrmRuta extends javax.swing.JDialog {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Ciudades"));
 
-        tblCiudad.setModel(new javax.swing.table.DefaultTableModel(
+        jButton4.setText("Grafo");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        tblTabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -144,14 +153,7 @@ public class FrmRuta extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(tblCiudad);
-
-        jButton4.setText("Grafo");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
+        jScrollPane1.setViewportView(tblTabla);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -160,16 +162,16 @@ public class FrmRuta extends javax.swing.JDialog {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton4)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -276,6 +278,6 @@ public class FrmRuta extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblCiudad;
+    private javax.swing.JTable tblTabla;
     // End of variables declaration//GEN-END:variables
 }
