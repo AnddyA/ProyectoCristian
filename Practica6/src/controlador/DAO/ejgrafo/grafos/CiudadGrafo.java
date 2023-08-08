@@ -76,7 +76,7 @@ public class CiudadGrafo {
                 }
                 for (Map.Entry<String, Double> entry : mapa.entrySet()) {
                     
-                    Ciudad aux = getPais(entry.getKey());
+                    Ciudad aux = getCiudad(entry.getKey());
                     if (aux != null) {
                         System.out.println(aux);
                         grafo.insertarAristaE(ciud, aux, entry.getValue());
@@ -89,7 +89,7 @@ public class CiudadGrafo {
         }
     }
 
-    private Ciudad getPais(String num) throws VacioException, PosicionException {
+    private Ciudad getCiudad(String num) throws VacioException, PosicionException {
         Ciudad aux = null;
         for (int i = 0; i < lista.size(); i++) {
             if (lista.get(i).getNombre().equals(num)) {
